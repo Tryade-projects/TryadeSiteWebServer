@@ -1,12 +1,20 @@
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 const app = express();
 
 const PORT = process.env.PORT || 5000;
 
 const RulesSections = require('./models/RulesSections');
+
+app.use(
+  cors({
+    origin: ['http://localhost:5173'],
+    methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH'],
+  })
+);
 
 /* Connecting to the MongoDB database. */
 mongoose
