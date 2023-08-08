@@ -32,33 +32,18 @@ app.get('/', (req, res) => {
 
 /* projects */
 /* This is a route that will return all the projects in the database. */
-app.get('/rulesSections', async (req, res) => {
-  const page = parseInt(req.query.page) || 1; // Récupère le numéro de page, par défaut à la première page
-  const perPage = 1; // Nombre d'éléments par page
-
-  try {
-    const count = await RulesSections.countDocuments(); // Compte le nombre total d'éléments
-    const totalPages = Math.ceil(count / perPage); // Calcule le nombre total de pages
-
-    if (page > totalPages) {
-      return res.status(404).json({ message: 'Page not found' });
-    }
-
-    const rulesSection = await RulesSections.findOne()
-      .skip((page - 1) * perPage)
-      .limit(perPage);
-
-    res.json({ rulesSection, totalPages });
-  } catch (error) {
-    res.status(500).json({ message: 'Error retrieving rules section' });
-  }
+app.get('/rulesSections', (_req, res) => {
+  RulesSections.find()
+    .then((rulesSections) => res.status(200).json(rulesSections))
+    .catch((error) => res.status(400).json({ error }));
 });
+
 /* Creating a new rulesSections in the database. */
 app.post('/rulesSections', (req, res) => {
-  const project = new RulesSections({
+  const rulesSections = new RulesSections({
     ...req.body,
   });
-  project
+  rulesSections
     .save()
     .then(() =>
       res.status(201).json({ message: 'rulesSection added successfully' })
