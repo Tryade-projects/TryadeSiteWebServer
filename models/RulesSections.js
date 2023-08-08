@@ -1,12 +1,27 @@
 const mongoose = require('mongoose');
 
-/* This is creating a schema for the project model. */
-const rulesSectionsSchema = new mongoose.Schema({
-  sectionTitle: { type: String, required: true },
-  urlBanner: { type: String, required: true },
-  colorLine: { type: String, required: true },
-  rules: { type: Array, required: true },
-  createdAt: { type: Date, default: Date.now },
+const ruleSchema = new mongoose.Schema({
+  textBackground: String,
+  title: String,
+  text: String,
 });
 
-module.exports = mongoose.model('RulesSections', rulesSectionsSchema);
+const rulesSectionSchema = new mongoose.Schema({
+  sectionTitle: String,
+  urlBanner: String,
+  colorLine: String,
+  rules: [ruleSchema], // Tableau d'objets de règles
+});
+
+// Middleware pour générer les _id des objets du tableau "rules"
+rulesSectionSchema.pre('save', function (next) {
+  // Parcourir les règles
+  for (const rule of this.rules) {
+    if (!rule._id) {
+      rule._id = new mongoose.Types.ObjectId();
+    }
+  }
+  next();
+});
+
+module.exports = mongoose.model('RulesSections', rulesSectionSchema);
