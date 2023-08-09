@@ -11,7 +11,7 @@ const RulesSections = require('./models/RulesSections');
 
 app.use(
   cors({
-    origin: ['http://localhost:5173'],
+    origin: ['http://localhost:5173', 'http://localhost:4173'],
     methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH'],
   })
 );
@@ -51,9 +51,9 @@ app.post('/rulesSections', (req, res) => {
     .catch((error) => res.status(400).json({ error }));
 });
 
-/* Deleting a project from the database. */
-app.delete('/rulesSections', (req, res) => {
-  RulesSections.deleteOne({ id: req.body.id.toString() })
+/* Deleting a rulesSections from the database. */
+app.delete('/rulesSections/:id', (req, res) => {
+  RulesSections.deleteOne({ _id: req.params.id })
     .then(() =>
       res.status(200).json({ message: 'rulesSection deleted successfully' })
     )
