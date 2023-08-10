@@ -16,6 +16,9 @@ app.use(
   })
 );
 
+// Ajoutez ce middleware pour parser automatiquement les données JSON du corps de la requête
+app.use(express.json());
+
 /* Connecting to the MongoDB database. */
 mongoose
   .connect(process.env.MONGODB_URI || '', {
@@ -40,9 +43,11 @@ app.get('/rulesSections', (_req, res) => {
 
 /* Creating a new rulesSections in the database. */
 app.post('/rulesSections', (req, res) => {
+  console.log(req.body);
   const rulesSections = new RulesSections({
     ...req.body,
   });
+  console.log(rulesSections);
   rulesSections
     .save()
     .then(() =>
