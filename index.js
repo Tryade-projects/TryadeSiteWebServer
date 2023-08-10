@@ -56,6 +56,18 @@ app.post('/rulesSections', (req, res) => {
     .catch((error) => res.status(400).json({ error }));
 });
 
+/* Updating a rulesSections in the database. */
+app.put('/rulesSections/:id', (req, res) => {
+  RulesSections.updateOne(
+    { _id: req.params.id },
+    { ...req.body, _id: req.params.id }
+  )
+    .then(() =>
+      res.status(200).json({ message: 'rulesSection modified successfully' })
+    )
+    .catch((error) => res.status(400).json({ error }));
+});
+
 /* Deleting a rulesSections from the database. */
 app.delete('/rulesSections/:id', (req, res) => {
   RulesSections.deleteOne({ _id: req.params.id })
