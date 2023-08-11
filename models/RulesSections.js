@@ -1,12 +1,14 @@
 const mongoose = require('mongoose');
 
 const ruleSchema = new mongoose.Schema({
+  id: String,
   textBackground: String,
   title: String,
   text: String,
 });
 
 const rulesSectionSchema = new mongoose.Schema({
+  id: String,
   sectionTitle: String,
   urlBanner: String,
   colorLine: String,
