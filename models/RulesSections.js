@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { v4 } = require('uuid');
 
 const ruleSchema = new mongoose.Schema({
   id: String,
@@ -17,10 +18,17 @@ const rulesSectionSchema = new mongoose.Schema({
 
 // Middleware pour générer les _id des objets du tableau "rules"
 rulesSectionSchema.pre('save', function (next) {
+  // ajouter un id uuid a la section si elle n'en a pas
+  if (!this.id) {
+    this.id = v4();
+  }
   // Parcourir les règles
   for (const rule of this.rules) {
     if (!rule._id) {
       rule._id = new mongoose.Types.ObjectId();
+    }
+    if (!rule.id) {
+      rule.id = v4();
     }
   }
   next();
