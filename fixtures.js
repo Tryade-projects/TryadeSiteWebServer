@@ -1,11 +1,14 @@
 require('dotenv').config();
 const mongoose = require('mongoose');
 
-const RulesSections = require('./models/RulesSections');
+const RulesSections = require('./models/RulesSection');
 const RulesSectionsData = require('./rules.json');
 
-const UpdatesSections = require('./models/UpdatesSections');
+const UpdatesSections = require('./models/UpdatesSection');
 const UpdatesSectionsData = require('./updates.json');
+
+const StreamersSections = require('./models/StreamersSection');
+const StreamersSectionsData = require('./streamers.json');
 
 const cleAPI = process.env.MONGODB_URI || '';
 
@@ -36,4 +39,5 @@ async function start(Model, data) {
 }
 
 // start(RulesSections, RulesSectionsData);
-start(UpdatesSections, UpdatesSectionsData);
+// start(UpdatesSections, UpdatesSectionsData);
+start(StreamersSections, StreamersSectionsData);

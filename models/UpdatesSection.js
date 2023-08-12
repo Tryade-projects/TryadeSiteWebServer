@@ -34,4 +34,4 @@ updatesSectionSchema.pre('save', function (next) {
   next();
 });
 
-module.exports = mongoose.model('UpdatesSections', updatesSectionSchema);
+module.exports = mongoose.model('UpdatesSection', updatesSectionSchema);
