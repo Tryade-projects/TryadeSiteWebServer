@@ -4,6 +4,9 @@ const mongoose = require('mongoose');
 const RulesSections = require('./models/RulesSections');
 const RulesSectionsData = require('./rules.json');
 
+const UpdatesSections = require('./models/UpdatesSections');
+const UpdatesSectionsData = require('./updates.json');
+
 const cleAPI = process.env.MONGODB_URI || '';
 
 /**
@@ -32,4 +35,5 @@ async function start(Model, data) {
   }
 }
 
-start(RulesSections, RulesSectionsData);
+// start(RulesSections, RulesSectionsData);
+start(UpdatesSections, UpdatesSectionsData);
