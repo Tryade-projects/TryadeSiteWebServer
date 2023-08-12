@@ -16,7 +16,7 @@ const rulesSectionSchema = new mongoose.Schema({
   rules: [ruleSchema], // Tableau d'objets de règles
 });
 
-// Middleware pour générer les _id des objets du tableau "rules"
+// Middleware pour générer les id se section et des rules pour les fixtures, et les _id des objets du tableau "rules" pour les nouveaux documents
 rulesSectionSchema.pre('save', function (next) {
   // ajouter un id uuid a la section si elle n'en a pas
   if (!this.id) {
@@ -34,4 +34,4 @@ rulesSectionSchema.pre('save', function (next) {
   next();
 });
 
-module.exports = mongoose.model('RulesSections', rulesSectionSchema);
+module.exports = mongoose.model('RulesSection', rulesSectionSchema);

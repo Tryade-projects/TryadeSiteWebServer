@@ -7,8 +7,9 @@ const app = express();
 
 const PORT = process.env.PORT || 5000;
 
-const RulesSections = require('./models/RulesSections');
-const UpdatesSections = require('./models/UpdatesSections');
+const RulesSection = require('./models/RulesSection');
+const UpdatesSection = require('./models/UpdatesSection');
+const StreamersSection = require('./models/StreamersSection');
 
 app.use(
   cors({
@@ -37,17 +38,17 @@ app.get('/', (req, res) => {
 /* projects */
 /* This is a route that will return all the projects in the database. */
 app.get('/rulesSections', (_req, res) => {
-  RulesSections.find()
-    .then((rulesSections) => res.status(200).json(rulesSections))
+  RulesSection.find()
+    .then((rulesSection) => res.status(200).json(rulesSection))
     .catch((error) => res.status(400).json({ error }));
 });
 
 /* Creating a new rulesSections in the database. */
 app.post('/rulesSections', (req, res) => {
-  const rulesSections = new RulesSections({
+  const rulesSection = new RulesSection({
     ...req.body,
   });
-  rulesSections
+  rulesSection
     .save()
     .then(() =>
       res.status(201).json({ message: 'rulesSection added successfully' })
@@ -57,7 +58,7 @@ app.post('/rulesSections', (req, res) => {
 
 /* Updating a rulesSections in the database. */
 app.put('/rulesSections/:id', (req, res) => {
-  RulesSections.updateOne(
+  RulesSection.updateOne(
     { _id: req.params.id },
     { ...req.body, _id: req.params.id }
   )
@@ -69,7 +70,7 @@ app.put('/rulesSections/:id', (req, res) => {
 
 /* Deleting a rulesSections from the database. */
 app.delete('/rulesSections/:id', (req, res) => {
-  RulesSections.deleteOne({ _id: req.params.id })
+  RulesSection.deleteOne({ _id: req.params.id })
     .then(() =>
       res.status(200).json({ message: 'rulesSection deleted successfully' })
     )
@@ -79,41 +80,85 @@ app.delete('/rulesSections/:id', (req, res) => {
 /* updates */
 /* This is a route that will return all the updates in the database. */
 app.get('/updatesSections', (_req, res) => {
-  UpdatesSections.find()
-    .then((updatesSections) => res.status(200).json(updatesSections))
+  UpdatesSection.find()
+    .then((updatesSection) => res.status(200).json(updatesSection))
     .catch((error) => res.status(400).json({ error }));
 });
 
 /* Creating a new updatesSections in the database. */
 app.post('/updatesSections', (req, res) => {
-  const updatesSections = new UpdatesSections({
+  const updatesSection = new UpdatesSection({
     ...req.body,
   });
-  updatesSections
+  updatesSection
     .save()
     .then(() =>
-      res.status(201).json({ message: 'rulesSection added successfully' })
+      res.status(201).json({ message: 'updatesSection added successfully' })
     )
     .catch((error) => res.status(400).json({ error }));
 });
 
 /* Updating a updatesSections in the database. */
 app.put('/updatesSections/:id', (req, res) => {
-  UpdatesSections.updateOne(
+  UpdatesSection.updateOne(
     { _id: req.params.id },
     { ...req.body, _id: req.params.id }
   )
     .then(() =>
-      res.status(200).json({ message: 'rulesSection modified successfully' })
+      res.status(200).json({ message: 'updatesSection modified successfully' })
     )
     .catch((error) => res.status(400).json({ error }));
 });
 
 /* Deleting a updatesSections from the database. */
 app.delete('/updatesSections/:id', (req, res) => {
-  UpdatesSections.deleteOne({ _id: req.params.id })
+  UpdatesSection.deleteOne({ _id: req.params.id })
     .then(() =>
-      res.status(200).json({ message: 'rulesSection deleted successfully' })
+      res.status(200).json({ message: 'updatesSection deleted successfully' })
+    )
+    .catch((error) => res.status(400).json({ error }));
+});
+
+/* streamers */
+/* This is a route that will return all the streamers in the database. */
+app.get('/streamersSections', (_req, res) => {
+  StreamersSection.find()
+    .then((streamersSection) => res.status(200).json(streamersSection))
+    .catch((error) => res.status(400).json({ error }));
+});
+
+/* Creating a new streamersSections in the database. */
+app.post('/streamersSections', (req, res) => {
+  const streamersSection = new StreamersSection({
+    ...req.body,
+  });
+  streamersSection
+    .save()
+    .then(() =>
+      res.status(201).json({ message: 'streamersSection added successfully' })
+    )
+    .catch((error) => res.status(400).json({ error }));
+});
+
+/* Updating a streamersSection in the database. */
+app.put('/streamersSections/:id', (req, res) => {
+  StreamersSection.updateOne(
+    { _id: req.params.id },
+    { ...req.body, _id: req.params.id }
+  )
+    .then(() =>
+      res
+        .status(200)
+        .json({ message: 'streamersSection modified successfully' })
+    )
+    .catch((error) => res.status(400).json({ error }));
+});
+
+/* Deleting a streamersSection from the database. */
+app.delete('/streamersSections/:id', (req, res) => {
+  StreamersSection.deleteOne({ _id: req.params.id })
+    .then(() =>
+      res.status(200).json({ message: 'streamersSection deleted successfully' })
     )
     .catch((error) => res.status(400).json({ error }));
 });
