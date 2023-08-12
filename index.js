@@ -8,6 +8,7 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 const RulesSections = require('./models/RulesSections');
+const UpdatesSections = require('./models/UpdatesSections');
 
 app.use(
   cors({
@@ -69,6 +70,48 @@ app.put('/rulesSections/:id', (req, res) => {
 /* Deleting a rulesSections from the database. */
 app.delete('/rulesSections/:id', (req, res) => {
   RulesSections.deleteOne({ _id: req.params.id })
+    .then(() =>
+      res.status(200).json({ message: 'rulesSection deleted successfully' })
+    )
+    .catch((error) => res.status(400).json({ error }));
+});
+
+/* updates */
+/* This is a route that will return all the updates in the database. */
+app.get('/updatesSections', (_req, res) => {
+  UpdatesSections.find()
+    .then((updatesSections) => res.status(200).json(updatesSections))
+    .catch((error) => res.status(400).json({ error }));
+});
+
+/* Creating a new updatesSections in the database. */
+app.post('/updatesSections', (req, res) => {
+  const updatesSections = new UpdatesSections({
+    ...req.body,
+  });
+  updatesSections
+    .save()
+    .then(() =>
+      res.status(201).json({ message: 'rulesSection added successfully' })
+    )
+    .catch((error) => res.status(400).json({ error }));
+});
+
+/* Updating a updatesSections in the database. */
+app.put('/updatesSections/:id', (req, res) => {
+  UpdatesSections.updateOne(
+    { _id: req.params.id },
+    { ...req.body, _id: req.params.id }
+  )
+    .then(() =>
+      res.status(200).json({ message: 'rulesSection modified successfully' })
+    )
+    .catch((error) => res.status(400).json({ error }));
+});
+
+/* Deleting a updatesSections from the database. */
+app.delete('/updatesSections/:id', (req, res) => {
+  UpdatesSections.deleteOne({ _id: req.params.id })
     .then(() =>
       res.status(200).json({ message: 'rulesSection deleted successfully' })
     )

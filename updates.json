@@ -1,0 +1,122 @@
+[
+  {
+    "sectionTitle": "Brothers & Hood",
+    "version": "1.12.15",
+    "urlBanner": "/images/updateBanner.png",
+    "colorLine": "#6badea",
+    "details": [
+      {
+        "title": "Description",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a quam sem. Praesent lorem mauris, auctor sed leo quis, dictum interdum odio. Donec porta lorem ut vestibulum mattis. Donec aliquam nunc ut lorem pretium, consectetur eros blandit."
+      },
+      {
+        "title": "Ajouts",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a quam sem. Praesent lorem mauris, auctor sed leo quis, dictum interdum odio. Donec porta lorem ut vestibulum mattis. Donec aliquam nunc ut lorem pretium, consectetur eros blandit."
+      },
+      {
+        "title": "Retraits",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a quam sem. Praesent lorem mauris, auctor sed leo quis, dictum interdum odio. Donec porta lorem ut vestibulum mattis. Donec aliquam nunc ut lorem pretium, consectetur eros blandit."
+      },
+      {
+        "title": "Modifications",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a quam sem. Praesent lorem mauris, auctor sed leo quis, dictum interdum odio. Donec porta lorem ut vestibulum mattis. Donec aliquam nunc ut lorem pretium, consectetur eros blandit."
+      }
+    ]
+  },
+  {
+    "sectionTitle": "Update 2.5.0",
+    "version": "2.5.0",
+    "urlBanner": "/images/updateBanner.png",
+    "colorLine": "#9f55ff",
+    "details": [
+      {
+        "title": "Description",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a quam sem. Praesent lorem mauris, auctor sed leo quis, dictum interdum odio. Donec porta lorem ut vestibulum mattis. Donec aliquam nunc ut lorem pretium, consectetur eros blandit."
+      },
+      {
+        "title": "Ajouts",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a quam sem. Praesent lorem mauris, auctor sed leo quis, dictum interdum odio. Donec porta lorem ut vestibulum mattis. Donec aliquam nunc ut lorem pretium, consectetur eros blandit."
+      },
+      {
+        "title": "Retraits",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a quam sem. Praesent lorem mauris, auctor sed leo quis, dictum interdum odio. Donec porta lorem ut vestibulum mattis. Donec aliquam nunc ut lorem pretium, consectetur eros blandit."
+      },
+      {
+        "title": "Modifications",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a quam sem. Praesent lorem mauris, auctor sed leo quis, dictum interdum odio. Donec porta lorem ut vestibulum mattis. Donec aliquam nunc ut lorem pretium, consectetur eros blandit."
+      }
+    ]
+  },
+  {
+    "sectionTitle": "Release Notes",
+    "version": "v3.0.1",
+    "urlBanner": "/images/updateBanner.png",
+    "colorLine": "#ff7f50",
+    "details": [
+      {
+        "title": "Description",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a quam sem. Praesent lorem mauris, auctor sed leo quis, dictum interdum odio. Donec porta lorem ut vestibulum mattis. Donec aliquam nunc ut lorem pretium, consectetur eros blandit."
+      },
+      {
+        "title": "Ajouts",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a quam sem. Praesent lorem mauris, auctor sed leo quis, dictum interdum odio. Donec porta lorem ut vestibulum mattis. Donec aliquam nunc ut lorem pretium, consectetur eros blandit."
+      },
+      {
+        "title": "Retraits",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a quam sem. Praesent lorem mauris, auctor sed leo quis, dictum interdum odio. Donec porta lorem ut vestibulum mattis. Donec aliquam nunc ut lorem pretium, consectetur eros blandit."
+      },
+      {
+        "title": "Modifications",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a quam sem. Praesent lorem mauris, auctor sed leo quis, dictum interdum odio. Donec porta lorem ut vestibulum mattis. Donec aliquam nunc ut lorem pretium, consectetur eros blandit."
+      }
+    ]
+  },
+  {
+    "sectionTitle": "Patch Update",
+    "version": "1.1.10",
+    "urlBanner": "/images/updateBanner.png",
+    "colorLine": "#66cdaa",
+    "details": [
+      {
+        "title": "Description",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a quam sem. Praesent lorem mauris, auctor sed leo quis, dictum interdum odio. Donec porta lorem ut vestibulum mattis. Donec aliquam nunc ut lorem pretium, consectetur eros blandit."
+      },
+      {
+        "title": "Ajouts",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a quam sem. Praesent lorem mauris, auctor sed leo quis, dictum interdum odio. Donec porta lorem ut vestibulum mattis. Donec aliquam nunc ut lorem pretium, consectetur eros blandit."
+      },
+      {
+        "title": "Retraits",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a quam sem. Praesent lorem mauris, auctor sed leo quis, dictum interdum odio. Donec porta lorem ut vestibulum mattis. Donec aliquam nunc ut lorem pretium, consectetur eros blandit."
+      },
+      {
+        "title": "Modifications",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a quam sem. Praesent lorem mauris, auctor sed leo quis, dictum interdum odio. Donec porta lorem ut vestibulum mattis. Donec aliquam nunc ut lorem pretium, consectetur eros blandit."
+      }
+    ]
+  },
+  {
+    "sectionTitle": "New Features",
+    "version": "4.0.0",
+    "urlBanner": "/images/updateBanner.png",
+    "colorLine": "#f08080",
+    "details": [
+      {
+        "title": "Description",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a quam sem. Praesent lorem mauris, auctor sed leo quis, dictum interdum odio. Donec porta lorem ut vestibulum mattis. Donec aliquam nunc ut lorem pretium, consectetur eros blandit."
+      },
+      {
+        "title": "Ajouts",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a quam sem. Praesent lorem mauris, auctor sed leo quis, dictum interdum odio. Donec porta lorem ut vestibulum mattis. Donec aliquam nunc ut lorem pretium, consectetur eros blandit."
+      },
+      {
+        "title": "Retraits",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a quam sem. Praesent lorem mauris, auctor sed leo quis, dictum interdum odio. Donec porta lorem ut vestibulum mattis. Donec aliquam nunc ut lorem pretium, consectetur eros blandit."
+      },
+      {
+        "title": "Modifications",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a quam sem. Praesent lorem mauris, auctor sed leo quis, dictum interdum odio. Donec porta lorem ut vestibulum mattis. Donec aliquam nunc ut lorem pretium, consectetur eros blandit."
+      }
+    ]
+  }
+]
