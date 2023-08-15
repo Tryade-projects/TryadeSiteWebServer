@@ -38,6 +38,6 @@ async function start(Model, data) {
   }
 }
 
-// start(RulesSections, RulesSectionsData);
+start(RulesSections, RulesSectionsData);
 // start(UpdatesSections, UpdatesSectionsData);
-start(StreamersSections, StreamersSectionsData);
+// start(StreamersSections, StreamersSectionsData);

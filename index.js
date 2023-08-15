@@ -43,7 +43,7 @@ app.get('/rulesSections', (_req, res) => {
     .catch((error) => res.status(400).json({ error }));
 });
 
-/* Creating a new rulesSections in the database. */
+/* Creating a new rulesSection in the database. */
 app.post('/rulesSections', (req, res) => {
   const rulesSection = new RulesSection({
     ...req.body,
@@ -56,7 +56,7 @@ app.post('/rulesSections', (req, res) => {
     .catch((error) => res.status(400).json({ error }));
 });
 
-/* Updating a rulesSections in the database. */
+/* Updating a rulesSection in the database. */
 app.put('/rulesSections/:id', (req, res) => {
   RulesSection.updateOne(
     { _id: req.params.id },
@@ -68,13 +68,30 @@ app.put('/rulesSections/:id', (req, res) => {
     .catch((error) => res.status(400).json({ error }));
 });
 
-/* Deleting a rulesSections from the database. */
+/* Deleting a rulesSection from the database. */
 app.delete('/rulesSections/:id', (req, res) => {
   RulesSection.deleteOne({ _id: req.params.id })
     .then(() =>
       res.status(200).json({ message: 'rulesSection deleted successfully' })
     )
     .catch((error) => res.status(400).json({ error }));
+});
+
+/* Remplace la collection  */
+app.put('/rulesSections', async (req, res) => {
+  const newOrderCollection = req.body;
+
+  try {
+    // Supprimer tous les documents existants dans la collection "RulesSection"
+    await RulesSection.deleteMany({});
+
+    // Insérer la nouvelle collection avec le nouvel ordre
+    await RulesSection.insertMany(newOrderCollection);
+
+    res.status(200).json({ message: 'rulesSections reordered successfully' });
+  } catch (error) {
+    res.status(400).json({ error });
+  }
 });
 
 /* updates */
@@ -85,7 +102,7 @@ app.get('/updatesSections', (_req, res) => {
     .catch((error) => res.status(400).json({ error }));
 });
 
-/* Creating a new updatesSections in the database. */
+/* Creating a new updatesSection in the database. */
 app.post('/updatesSections', (req, res) => {
   const updatesSection = new UpdatesSection({
     ...req.body,
@@ -98,7 +115,7 @@ app.post('/updatesSections', (req, res) => {
     .catch((error) => res.status(400).json({ error }));
 });
 
-/* Updating a updatesSections in the database. */
+/* Updating a updatesSection in the database. */
 app.put('/updatesSections/:id', (req, res) => {
   UpdatesSection.updateOne(
     { _id: req.params.id },
@@ -110,13 +127,30 @@ app.put('/updatesSections/:id', (req, res) => {
     .catch((error) => res.status(400).json({ error }));
 });
 
-/* Deleting a updatesSections from the database. */
+/* Deleting a updatesSection from the database. */
 app.delete('/updatesSections/:id', (req, res) => {
   UpdatesSection.deleteOne({ _id: req.params.id })
     .then(() =>
       res.status(200).json({ message: 'updatesSection deleted successfully' })
     )
     .catch((error) => res.status(400).json({ error }));
+});
+
+/* Remplace la collection  */
+app.put('/updatesSections', async (req, res) => {
+  const newOrderCollection = req.body;
+
+  try {
+    // Supprimer tous les documents existants dans la collection "updatesSections"
+    await UpdatesSection.deleteMany({});
+
+    // Insérer la nouvelle collection avec le nouvel ordre
+    await UpdatesSection.insertMany(newOrderCollection);
+
+    res.status(200).json({ message: 'updatesSections reordered successfully' });
+  } catch (error) {
+    res.status(400).json({ error });
+  }
 });
 
 /* streamers */
@@ -127,7 +161,7 @@ app.get('/streamersSections', (_req, res) => {
     .catch((error) => res.status(400).json({ error }));
 });
 
-/* Creating a new streamersSections in the database. */
+/* Creating a new streamersSection in the database. */
 app.post('/streamersSections', (req, res) => {
   const streamersSection = new StreamersSection({
     ...req.body,
@@ -161,6 +195,25 @@ app.delete('/streamersSections/:id', (req, res) => {
       res.status(200).json({ message: 'streamersSection deleted successfully' })
     )
     .catch((error) => res.status(400).json({ error }));
+});
+
+/* Remplace la collection  */
+app.put('/streamersSections', async (req, res) => {
+  const newOrderCollection = req.body;
+
+  try {
+    // Supprimer tous les documents existants dans la collection "streamersSections"
+    await StreamersSection.deleteMany({});
+
+    // Insérer la nouvelle collection avec le nouvel ordre
+    await StreamersSection.insertMany(newOrderCollection);
+
+    res
+      .status(200)
+      .json({ message: 'streamersSections reordered successfully' });
+  } catch (error) {
+    res.status(400).json({ error });
+  }
 });
 
 app.listen(PORT, () =>
