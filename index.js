@@ -156,9 +156,20 @@ app.put('/updatesSections', async (req, res) => {
 /* streamers */
 /* This is a route that will return all the streamers in the database. */
 app.get('/streamersSections', (_req, res) => {
-  StreamersSection.find()
-    .then((streamersSection) => res.status(200).json(streamersSection))
-    .catch((error) => res.status(400).json({ error }));
+  const { cursor } = _req.query;
+  if (typeof cursor === 'string') {
+    const cursorNumber = parseInt(cursor, 10);
+    const pageSize = 2;
+    StreamersSection.find({})
+      .skip(cursorNumber * pageSize)
+      .limit(pageSize)
+      .then((streamersSection) => res.status(200).json(streamersSection))
+      .catch((error) => res.status(400).json({ error }));
+  } else {
+    StreamersSection.find()
+      .then((streamersSection) => res.status(200).json(streamersSection))
+      .catch((error) => res.status(400).json({ error }));
+  }
 });
 
 /* Creating a new streamersSection in the database. */
