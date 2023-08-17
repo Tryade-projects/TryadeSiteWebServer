@@ -97,9 +97,20 @@ app.put('/rulesSections', async (req, res) => {
 /* updates */
 /* This is a route that will return all the updates in the database. */
 app.get('/updatesSections', (_req, res) => {
-  UpdatesSection.find()
-    .then((updatesSection) => res.status(200).json(updatesSection))
-    .catch((error) => res.status(400).json({ error }));
+  const { cursor } = _req.query;
+  if (typeof cursor === 'string') {
+    const cursorNumber = parseInt(cursor, 10);
+    const pageSize = 3;
+    UpdatesSection.find({})
+      .skip(cursorNumber * pageSize)
+      .limit(pageSize)
+      .then((updatesSection) => res.status(200).json(updatesSection))
+      .catch((error) => res.status(400).json({ error }));
+  } else {
+    UpdatesSection.find()
+      .then((updatesSection) => res.status(200).json(updatesSection))
+      .catch((error) => res.status(400).json({ error }));
+  }
 });
 
 /* Creating a new updatesSection in the database. */
