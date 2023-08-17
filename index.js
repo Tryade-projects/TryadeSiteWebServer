@@ -159,7 +159,7 @@ app.get('/streamersSections', (_req, res) => {
   const { cursor } = _req.query;
   if (typeof cursor === 'string') {
     const cursorNumber = parseInt(cursor, 10);
-    const pageSize = 2;
+    const pageSize = 6;
     StreamersSection.find({})
       .skip(cursorNumber * pageSize)
       .limit(pageSize)
