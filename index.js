@@ -113,6 +113,13 @@ app.get('/updatesSections', (_req, res) => {
   }
 });
 
+/* Get one updatesSection */
+app.get('/updatesSections/:id', (req, res) => {
+  UpdatesSection.findOne({ id: req.params.id })
+    .then((updatesSection) => res.status(200).json(updatesSection))
+    .catch((error) => res.status(404).json({ error }));
+});
+
 /* Creating a new updatesSection in the database. */
 app.post('/updatesSections', (req, res) => {
   const updatesSection = new UpdatesSection({
