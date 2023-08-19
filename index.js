@@ -2,6 +2,8 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 const app = express();
 
@@ -10,6 +12,7 @@ const PORT = process.env.PORT || 5000;
 const RulesSection = require('./models/RulesSection');
 const UpdatesSection = require('./models/UpdatesSection');
 const StreamersSection = require('./models/StreamersSection');
+const AdminSchema = require('./models/AdminSchema');
 
 app.use(
   cors({
@@ -33,6 +36,76 @@ mongoose
 
 app.get('/', (req, res) => {
   res.send('Hello World !!');
+});
+
+// const adminData = [
+//   {
+//     username: process.env.ADMIN_USER_ZORAL,
+//     password: process.env.ADMIN_PASSWORD_ZORAL,
+//   },
+//   {
+//     username: process.env.ADMIN_USER_SARKO,
+//     password: process.env.ADMIN_PASSWORD_SARKO,
+//   },
+// ];
+
+// post les données d'admin dans la bdd en cryptant le mot de passe et en utilisant toutes les sécurité necessaires
+// async function postAdminData() {
+//   adminData.map(async (admin) => {
+//     const { username, password = '' } = admin;
+//     const hashedPassword = await bcrypt.hash(password, 10);
+//     const newAdmin = new AdminSchema({
+//       username,
+//       password: hashedPassword,
+//     });
+//     newAdmin
+//       .save()
+//       .then(() => console.log('admin added successfully'))
+//       .catch((error) => console.log({ error }));
+//   });
+// }
+
+// postAdminData();
+
+/* admins */
+/* This code is handling the POST request to the '/admins' endpoint. It is responsible for
+authenticating the admin user by checking their username and password. */
+app.post('/admins', (req, res) => {
+  const { username, password } = req.body;
+  console.log({ username, password });
+
+  AdminSchema.findOne({ username: username })
+    .then(async (admin) => {
+      console.log({ admin });
+      if (!admin) {
+        return res.status(401).json({ message: 'Identifiants invalides' });
+      }
+
+      const passwordMatch = await bcrypt.compare(password, admin.password);
+      if (!passwordMatch) {
+        return res.status(401).json({ message: 'Identifiants invalides' });
+      }
+
+      const token = jwt.sign(
+        { id: admin._id },
+        `${process.env.JWT_SECRET_KEY}`,
+        {
+          expiresIn: '1h',
+        }
+      );
+      res.json({
+        token: token,
+        expiresIn: 120, // Ajoutez cette ligne pour renvoyer expiresIn
+        authUserState: {
+          id: admin._id,
+          username: admin.username,
+        }, // Ajoutez cette ligne pour renvoyer authUserState
+      });
+    })
+    .catch((error) => {
+      console.error("Erreur lors de la recherche de l'administrateur", error);
+      res.status(500).json({ message: 'Erreur interne du serveur' });
+    });
 });
 
 /* projects */
