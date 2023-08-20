@@ -6,6 +6,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
 const app = express();
+app.disable('x-powered-by');
 
 const PORT = process.env.PORT || 5000;
 
@@ -16,13 +17,28 @@ const AdminSchema = require('./models/AdminSchema');
 
 app.use(
   cors({
-    origin: ['http://localhost:5173', 'http://localhost:4173'],
+    origin: [
+      'http://localhost:5173',
+      'http://localhost:4173',
+      'https://tryade-site-web.vercel.app',
+    ],
     methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH'],
+  })
+);
+
+app.use(
+  express.static('public', {
+    setHeaders: function (res, path) {
+      if (path.endsWith('.svg')) {
+        res.setHeader('Cache-Control', 'public, max-age=31536000');
+      }
+    },
   })
 );
 
 // Ajoutez ce middleware pour parser automatiquement les données JSON du corps de la requête
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 /* Connecting to the MongoDB database. */
 mongoose
