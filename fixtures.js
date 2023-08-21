@@ -50,6 +50,6 @@ async function start(Model, data, arrayName) {
   }
 }
 
-// start(RulesSections, RulesSectionsData, 'rules');
+start(RulesSections, RulesSectionsData, 'rules');
 // start(UpdatesSections, UpdatesSectionsData, 'details');
 // start(StreamersSections, StreamersSectionsData);

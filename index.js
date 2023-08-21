@@ -103,7 +103,7 @@ app.post('/admins', (req, res) => {
       }
 
       const token = jwt.sign(
-        { id: admin._id },
+        { id: admin.id },
         `${process.env.JWT_SECRET_KEY}`,
         {
           expiresIn: '1h',
@@ -113,7 +113,7 @@ app.post('/admins', (req, res) => {
         token: token,
         expiresIn: 120, // Ajoutez cette ligne pour renvoyer expiresIn
         authUserState: {
-          id: admin._id,
+          id: admin.id,
           username: admin.username,
         }, // Ajoutez cette ligne pour renvoyer authUserState
       });
@@ -148,8 +148,8 @@ app.post('/rulesSections', (req, res) => {
 /* Updating a rulesSection in the database. */
 app.put('/rulesSections/:id', (req, res) => {
   RulesSection.updateOne(
-    { _id: req.params.id },
-    { ...req.body, _id: req.params.id }
+    { id: req.params.id },
+    { ...req.body, id: req.params.id }
   )
     .then(() =>
       res.status(200).json({ message: 'rulesSection modified successfully' })
@@ -159,7 +159,7 @@ app.put('/rulesSections/:id', (req, res) => {
 
 /* Deleting a rulesSection from the database. */
 app.delete('/rulesSections/:id', (req, res) => {
-  RulesSection.deleteOne({ _id: req.params.id })
+  RulesSection.deleteOne({ id: req.params.id })
     .then(() =>
       res.status(200).json({ message: 'rulesSection deleted successfully' })
     )
@@ -225,8 +225,8 @@ app.post('/updatesSections', (req, res) => {
 /* Updating a updatesSection in the database. */
 app.put('/updatesSections/:id', (req, res) => {
   UpdatesSection.updateOne(
-    { _id: req.params.id },
-    { ...req.body, _id: req.params.id }
+    { id: req.params.id },
+    { ...req.body, id: req.params.id }
   )
     .then(() =>
       res.status(200).json({ message: 'updatesSection modified successfully' })
@@ -236,7 +236,7 @@ app.put('/updatesSections/:id', (req, res) => {
 
 /* Deleting a updatesSection from the database. */
 app.delete('/updatesSections/:id', (req, res) => {
-  UpdatesSection.deleteOne({ _id: req.params.id })
+  UpdatesSection.deleteOne({ id: req.params.id })
     .then(() =>
       res.status(200).json({ message: 'updatesSection deleted successfully' })
     )
@@ -295,8 +295,8 @@ app.post('/streamersSections', (req, res) => {
 /* Updating a streamersSection in the database. */
 app.put('/streamersSections/:id', (req, res) => {
   StreamersSection.updateOne(
-    { _id: req.params.id },
-    { ...req.body, _id: req.params.id }
+    { id: req.params.id },
+    { ...req.body, id: req.params.id }
   )
     .then(() =>
       res
@@ -308,7 +308,7 @@ app.put('/streamersSections/:id', (req, res) => {
 
 /* Deleting a streamersSection from the database. */
 app.delete('/streamersSections/:id', (req, res) => {
-  StreamersSection.deleteOne({ _id: req.params.id })
+  StreamersSection.deleteOne({ id: req.params.id })
     .then(() =>
       res.status(200).json({ message: 'streamersSection deleted successfully' })
     )
