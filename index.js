@@ -166,7 +166,7 @@ app.delete('/rulesSections/:id', (req, res) => {
 
 /* Remplace la collection  */
 app.put('/rulesSections', async (req, res) => {
-  const newOrderCollection = req.body;
+  const newOrderCollection = req.body.toString();
 
   try {
     // Supprimer tous les documents existants dans la collection "RulesSection"
