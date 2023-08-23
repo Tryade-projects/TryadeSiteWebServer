@@ -166,14 +166,14 @@ app.delete('/rulesSections/:id', (req, res) => {
 
 /* Remplace la collection  */
 app.put('/rulesSections', async (req, res) => {
-  const newOrderCollection = req.body.toString();
+  const newOrderCollection = req.body;
 
   try {
     // Supprimer tous les documents existants dans la collection "RulesSection"
     await RulesSection.deleteMany({});
 
     // Insérer la nouvelle collection avec le nouvel ordre
-    await RulesSection.insertMany(newOrderCollection);
+    await RulesSection.insertMany(newOrderCollection.toString());
 
     res.status(200).json({ message: 'rulesSections reordered successfully' });
   } catch (error) {
