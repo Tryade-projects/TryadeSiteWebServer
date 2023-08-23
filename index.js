@@ -87,12 +87,10 @@ app.get('/', (req, res) => {
 /* This code is handling the POST request to the '/admins' endpoint. It is responsible for
 authenticating the admin user by checking their username and password. */
 app.post('/admins', (req, res) => {
-  const { username, password } = req.body;
-  console.log({ username, password });
+  const { username, password } = req.body.toString();
 
   AdminSchema.findOne({ username: username })
     .then(async (admin) => {
-      console.log({ admin });
       if (!admin) {
         return res.status(401).json({ message: 'Identifiants invalides' });
       }
