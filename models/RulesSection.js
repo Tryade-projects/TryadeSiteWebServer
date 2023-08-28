@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const { v4 } = require('uuid');
 
 const ruleSchema = new mongoose.Schema({
   id: { type: String, unique: true, required: true },
